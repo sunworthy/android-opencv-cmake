@@ -3,8 +3,8 @@
 > Android 集成 opencv示例, 使用cmake 文件编译; 使用cmake的好处: studio原生支持, 方便debug c++库
     
 ## 环境要求
-* > Android studio 2.3.3
-* > Cmake3.0
+* Android studio 2.3.3及以上
+* Cmake3.0及以上
 * ndk14
 * opencv2.4.13 or opencv3.3
 
