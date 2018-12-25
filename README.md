@@ -1,19 +1,50 @@
 # Android-opencv-cmake
 
 > Android opencv image process samples ,build with cmake 
- 
-## Environment
+    
+## 环境要求
 * Android studio 2.3.3
 * Cmake
 * ndk14
 * opencv2.4.13 or opencv3.3
 
-## Configuration
+## 配置
+* 在local.properties 文件中配置opencv sdk 路径
 
-* set opencv android sdk dir in local.properties
-```
 opencv.dir = ${opencv_sdk_dir}
 ```
+ndk.dir=/Users/king/Library/Android/ndk14
+sdk.dir=/Users/king/Library/Android/sdk
+opencv.dir=/Users/king/Libs/OpenCV2413
+```
+
+
+* 在build.gradle中配置cmake参数
+
+```
+externalNativeBuild {
+     cmake {
+           cppFlags "-std=c++11 -frtti -fexceptions"
+           arguments "-DOpenCV_DIR=" + getOpenCVDir().toString()+"/sdk/native/jni", "-DANDROID_ARM_NEON=TRUE"
+      }
+}
+ndk {
+      abiFilters  "armeabi-v7a"   //, "arm64-v8a","armeabi",
+}
+...
+def getOpenCVDir() {
+    Properties properties = new Properties()
+    properties.load(new File(rootDir.absolutePath + "/local.properties").newDataInputStream())
+    def externalModuleDir = properties.getProperty('opencv.dir', null)
+    if (externalModuleDir == null) {
+        throw new GradleException(
+                "OpenCV location not found. Define location with opencv.dir in the local.properties file!")
+    }
+    return externalModuleDir
+}
+
+```
+
 
 ## License
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
