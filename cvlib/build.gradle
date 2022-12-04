@@ -6,6 +6,7 @@ plugins {
 android {
     compileSdk 33
 
+    namespace 'com.joshkryo.lib'
     defaultConfig {
         minSdk 21
         targetSdk 33
@@ -42,8 +43,7 @@ android {
     }
     externalNativeBuild {
         cmake {
-            path "src/main/cpp/CMakeLists.txt"
-            version "3.10.2"
+            path "CMakeLists.txt"
         }
     }
     compileOptions {
@@ -53,7 +53,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.joshkryo.lib'
 }
 
 
