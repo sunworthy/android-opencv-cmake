@@ -14,8 +14,8 @@
 
 
 using namespace cv;
-extern "C" JNIEXPORT jstring JNICALL
-Java_com_joshkryo_lib_OpenCVLib_imageProcess(JNIEnv *env, jobject instance,
+extern "C"
+JNIEXPORT jstring Java_com_joshkryo_lib_OpenCVLib_imageProcess(JNIEnv *env, jclass instance,
                                              jstring _imagePath,jstring _outDir) {
 
     const char *imgPath = (env)->GetStringUTFChars(_imagePath, 0);
@@ -30,7 +30,7 @@ Java_com_joshkryo_lib_OpenCVLib_imageProcess(JNIEnv *env, jobject instance,
 
     //灰度处理
     Mat gray_image;
-    cvtColor(src, gray_image, CV_BGR2GRAY );
+    cvtColor(src, gray_image, COLOR_BGR2GRAY );
 
 
     //处理之后的图像

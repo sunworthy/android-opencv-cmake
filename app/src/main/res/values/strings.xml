@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">OpenCVJniDemo</string>
-    <string name="select_photo">选择图片</string>
-    <string name="func1">算法调用</string>
+    <string name="app_name">OpenCvJni</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
-    <string name="description_info">Info</string>
-    <string name="request_permission">This sample needs camera permission.</string>
-    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
-    <string name="picture">Picture</string>
-    <string name="intro_message">Camera Data</string>
-
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

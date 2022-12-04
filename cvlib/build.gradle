@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdk 33
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
 
         externalNativeBuild {
             cmake {
@@ -53,6 +53,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    namespace 'com.joshkryo.lib'
 }
 
 
