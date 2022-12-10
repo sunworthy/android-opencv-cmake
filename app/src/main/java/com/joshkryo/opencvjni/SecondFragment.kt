@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.joshkryo.lib.OpenCVLib
+import com.joshkryo.lib.CVLib4
 import com.joshkryo.opencvjni.databinding.FragmentSecondBinding
 
 /**
@@ -39,9 +40,10 @@ class SecondFragment : Fragment() {
         val resId = savedInstanceState?.getInt("imgResId")
         val bitmap = resId?.let { BitmapFactory.decodeResource(resources, it) }
 
-        val processBitmap = OpenCVLib.processBitmap(bitmap, "1")
-        binding.ivProcessed.setImageBitmap(processBitmap)
-
+//        val processBitmap = CVLib4.processBitmap(bitmap, "1")
+//        binding.ivProcessed.setImageBitmap(processBitmap)
+        val str = CVLib4.stringFromJNI()
+        Toast.makeText(context, str, Toast.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {

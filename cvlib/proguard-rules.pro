@@ -27,4 +27,4 @@
 -keepclasseswithmembernames class * {
     native <methods>;
 }
--keep class com.joshkryo.lib.OpenCVLib
+-keep class com.joshkryo.lib.CVLib4
