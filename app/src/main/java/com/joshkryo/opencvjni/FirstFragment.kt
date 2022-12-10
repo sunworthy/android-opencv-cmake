@@ -1,6 +1,7 @@
 package com.joshkryo.opencvjni
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,6 +55,8 @@ class FirstFragment : Fragment() {
             val holderItem = mData[position]
             val bundle = Bundle()
             bundle.putInt("imgResId", holderItem.imgRes)
+            bundle.putInt("position", position)
+            Log.i(tag, "imgResId: ${holderItem.imgRes}")
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
         }
 

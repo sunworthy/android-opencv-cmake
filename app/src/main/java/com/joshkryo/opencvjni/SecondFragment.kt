@@ -1,7 +1,9 @@
 package com.joshkryo.opencvjni
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.joshkryo.lib.CVLib4
 import com.joshkryo.opencvjni.databinding.FragmentSecondBinding
+import java.util.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -37,13 +40,21 @@ class SecondFragment : Fragment() {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
-        val resId = savedInstanceState?.getInt("imgResId")
-        val bitmap = resId?.let { BitmapFactory.decodeResource(resources, it) }
+        val resId = arguments?.getInt("imgResId")
+        val position = arguments?.getInt("position") ?: 0
+        Log.d(tag, "onViewCreated: $resId")
+        if (Objects.nonNull(resId)) {
+            val bitmap = resId?.let { BitmapFactory.decodeResource(resources, it) }
+            Log.d(tag, "onViewCreated: $bitmap")
 
-//        val processBitmap = CVLib4.processBitmap(bitmap, "1")
-//        binding.ivProcessed.setImageBitmap(processBitmap)
-        val str = CVLib4.stringFromJNI()
-        Toast.makeText(context, str, Toast.LENGTH_LONG).show()
+            val outBitmap = Bitmap.createBitmap(
+                bitmap?.width ?: 0,
+                bitmap?.height ?: 0,
+                Bitmap.Config.ARGB_8888
+            )
+            CVLib4.process_bitmap(bitmap, position, outBitmap);
+            binding.ivProcessed.setImageBitmap(outBitmap)
+        }
     }
 
     override fun onDestroyView() {

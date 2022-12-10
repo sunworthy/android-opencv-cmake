@@ -1,5 +1,7 @@
 package com.joshkryo.lib;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by king on 2017/12/23.
  */
@@ -9,16 +11,13 @@ public class CVLib4 {
         System.loadLibrary("cv_lib4");
     }
 
-    public static native String stringFromJNI();
-
-//    /**
-//     * process bitmap
-//     *
-//     * @param bitmap Bitmap
-//     * @param method method
-//     * @return result
-//     */
-//    public static native Bitmap process_bitmap(Bitmap bitmap, String method);
+    /**
+     * process bitmap
+     *
+     * @param bitmap Bitmap
+     * @param type   method
+     */
+    public static native void process_bitmap(Bitmap bitmap, int type, Bitmap bitmap_out);
 //
 //    /**
 //     * process bitmap

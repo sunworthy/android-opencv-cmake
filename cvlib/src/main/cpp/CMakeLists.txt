@@ -1,20 +1,22 @@
 cmake_minimum_required(VERSION 3.18.1)
 
 project("cv_lib4")
-SET(PROJECT_NAME cv_lib4)
-
-#SET(OpenCV_FOUND true )
-#FIND_PACKAGE(OpenCV REQUIRED)
+set(PROJECT_NAME cv_lib4)
+set(OpenCV_DIR "/mnt/app/local/opencv/openCV-android-sdk4/sdk/native/jni")
+find_package(OpenCV REQUIRED)
+message(STATUS "OpenCV libraries: ${OpenCV_LIBS}")
 
 add_library(
         ${PROJECT_NAME}
         SHARED
-        cv-native-lib.cpp)
+        native-lib.cpp cv-lib.h cv-lib.cpp)
 
 find_library(log-lib log)
 
 target_link_libraries(
         ${PROJECT_NAME}
-        ${log-lib} )
+        ${log-lib}
+        ${OpenCV_LIBS}
+        jnigraphics)
 
 
